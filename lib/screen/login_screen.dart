@@ -1,3 +1,5 @@
+import 'package:authentication_app/shared/components/custom_button_component.dart';
+import 'package:authentication_app/shared/components/text_form_field_component.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -60,147 +62,66 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                              contentPadding: EdgeInsets.fromLTRB(12, 0, 12, 0),
-                              fillColor: Color.fromRGBO(245, 247, 248, 1),
-                              filled: true,
-                              focusColor: Color.fromRGBO(245, 247, 248, 1),
-                              hintText: 'Email',
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5))),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.fromLTRB(12, 0, 12, 0),
-                            fillColor: Color.fromRGBO(245, 247, 248, 1),
-                            filled: true,
-                            focusColor: Color.fromRGBO(245, 247, 248, 1),
-                            hintText: 'Password',
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5)),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: GestureDetector(
-                          child: Container(
-                            width: MediaQuery.of(context).size.width,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: Colors.white,
-                            ),
-                            child: const Center(
-                              child: Text(
-                                "Sign in",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.black),
-                              ),
-                            ),
-                          ),
-                          onTap: () {},
-                        ),
-                      )
+                      TextFormFieldComponent(
+                          title: 'Email',
+                          colorFill: Color.fromRGBO(245, 247, 248, 1),
+                          colorFocus: Color.fromRGBO(245, 247, 248, 1),
+                          filled: true),
+                      TextFormFieldComponent(
+                          title: 'Passowrd',
+                          colorFill: Color.fromRGBO(245, 247, 248, 1),
+                          colorFocus: Color.fromRGBO(245, 247, 248, 1),
+                          filled: true),
+                      CustomButtonComponent(
+                          widthAsset: 0,
+                          heighAsset: 0,
+                          title: 'Sign In',
+                          widthButton: MediaQuery.of(context).size.width,
+                          heightButton: 50,
+                          assetPath: '',
+                          textColor: Colors.black,
+                          color: Colors.white)
                     ],
                   ),
-                ),
-                const SizedBox(
-                  height: 20,
                 ),
                 const Text(
                   'Dont have a account?',
                   style: TextStyle(
                       color: Colors.black, fontWeight: FontWeight.w500),
                 ),
-                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10, right: 10),
-                      child: GestureDetector(
-                        child: Container(
-                          width: 160,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: Color.fromRGBO(41, 41, 41, 1),
-                          ),
-                          child: const Center(
-                            child: Text(
-                              "Facebook",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                        onTap: () {},
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10, right: 10),
-                      child: GestureDetector(
-                        child: Container(
-                          width: 160,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: Color.fromRGBO(41, 41, 41, 1),
-                          ),
-                          child: const Center(
-                            child: Text(
-                              "Google",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                        onTap: () {},
-                      ),
-                    ),
+                    CustomButtonComponent(
+                        title: 'Facebook',
+                        color: Color.fromRGBO(41, 41, 41, 1),
+                        textColor: Colors.white,
+                        assetPath: 'assets/icons/facebook.png',
+                        widthAsset: 50,
+                        heighAsset: 25,
+                        heightButton: 50,
+                        widthButton: 160),
+                    CustomButtonComponent(
+                      title: 'Google',
+                      color: Color.fromRGBO(41, 41, 41, 1),
+                      textColor: Colors.white,
+                      heightButton: 50,
+                      widthButton: 160,
+                      widthAsset: 50,
+                      heighAsset: 25,
+                      assetPath: 'assets/icons/google.png',
+                    )
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(25),
-                  child: GestureDetector(
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.4),
-                            spreadRadius: 4,
-                            offset: Offset(0, 2), // changes position of shadow
-                          ),
-                        ],
-                        borderRadius: BorderRadius.circular(5),
-                        color: Colors.white,
-                      ),
-                      child: const Center(
-                        child: Text(
-                          "Sign up with email",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: Color.fromRGBO(41, 41, 41, 1),
-                          ),
-                        ),
-                      ),
-                    ),
-                    onTap: () {},
-                  ),
+                CustomButtonComponent(
+                  title: 'Sign up with email',
+                  widthButton: MediaQuery.of(context).size.width,
+                  heightButton: 50,
+                  textColor: Colors.white,
+                  assetPath: '',
+                  widthAsset: 160,
+                  heighAsset: 50,
+                  color: Color.fromRGBO(41, 41, 41, 1),
                 )
               ],
             ),
