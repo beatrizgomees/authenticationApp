@@ -8,7 +8,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(41, 41, 41, 1),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Stack(
           children: [
@@ -18,9 +18,9 @@ class LoginScreen extends StatelessWidget {
                   height: MediaQuery.of(context).size.height - 200,
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.elliptical(200, 100),
-                        bottomRight: Radius.elliptical(500, 100)),
-                    color: Color.fromRGBO(255, 255, 155, 1),
+                        bottomLeft: Radius.elliptical(90, 20),
+                        bottomRight: Radius.elliptical(350, 120)),
+                    color: Color.fromRGBO(253, 10, 96, 1),
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -33,18 +33,18 @@ class LoginScreen extends StatelessWidget {
                               Image.asset(
                                 'assets/images/acesso.png',
                                 width: 100,
-                                height: 50,
+                                height: 60,
                               ),
                             ],
                           ),
-                          SizedBox(height: 20),
+                          SizedBox(height: 10),
                           const Padding(
                             padding: EdgeInsets.only(left: 20.0),
                             child: Text(
                               'Authentication',
                               style: TextStyle(
                                   fontSize: 28,
-                                  color: Color.fromRGBO(41, 41, 41, 1),
+                                  color: Colors.white,
                                   fontWeight: FontWeight.w600),
                             ),
                           ),
@@ -54,7 +54,7 @@ class LoginScreen extends StatelessWidget {
                               'App',
                               style: TextStyle(
                                   fontSize: 28,
-                                  color: Color.fromRGBO(41, 41, 41, 1),
+                                  color: Colors.white,
                                   fontWeight: FontWeight.w600),
                             ),
                           ),
@@ -66,12 +66,9 @@ class LoginScreen extends StatelessWidget {
                           decoration: InputDecoration(
                               contentPadding: EdgeInsets.fromLTRB(12, 0, 12, 0),
                               fillColor: Color.fromRGBO(245, 247, 248, 1),
-                              label: const Text(
-                                "Email",
-                                style: TextStyle(
-                                  color: Color.fromRGBO(41, 41, 41, 1),
-                                ),
-                              ),
+                              filled: true,
+                              focusColor: Color.fromRGBO(245, 247, 248, 1),
+                              hintText: 'Email',
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5))),
                         ),
@@ -81,12 +78,10 @@ class LoginScreen extends StatelessWidget {
                         child: TextFormField(
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.fromLTRB(12, 0, 12, 0),
-                            label: const Text(
-                              "Password",
-                              style: TextStyle(
-                                color: Color.fromRGBO(41, 41, 41, 1),
-                              ),
-                            ),
+                            fillColor: Color.fromRGBO(245, 247, 248, 1),
+                            filled: true,
+                            focusColor: Color.fromRGBO(245, 247, 248, 1),
+                            hintText: 'Password',
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5)),
                           ),
@@ -100,14 +95,14 @@ class LoginScreen extends StatelessWidget {
                             height: 50,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              color: Color.fromRGBO(41, 41, 41, 1),
+                              color: Colors.white,
                             ),
                             child: const Center(
                               child: Text(
                                 "Sign in",
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600,
-                                    color: Colors.white),
+                                    color: Colors.black),
                               ),
                             ),
                           ),
@@ -117,14 +112,15 @@ class LoginScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Text(
-                  'Dont have a acconunt?',
-                  style: TextStyle(color: Colors.white),
+                const Text(
+                  'Dont have a account?',
+                  style: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.w500),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -136,14 +132,14 @@ class LoginScreen extends StatelessWidget {
                           height: 50,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: Colors.white,
+                            color: Color.fromRGBO(41, 41, 41, 1),
                           ),
                           child: const Center(
                             child: Text(
                               "Facebook",
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                color: Color.fromRGBO(41, 41, 41, 1),
+                                color: Colors.white,
                               ),
                             ),
                           ),
@@ -159,14 +155,14 @@ class LoginScreen extends StatelessWidget {
                           height: 50,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: Colors.white,
+                            color: Color.fromRGBO(41, 41, 41, 1),
                           ),
                           child: const Center(
                             child: Text(
                               "Google",
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                color: Color.fromRGBO(41, 41, 41, 1),
+                                color: Colors.white,
                               ),
                             ),
                           ),
@@ -183,8 +179,16 @@ class LoginScreen extends StatelessWidget {
                       width: MediaQuery.of(context).size.width,
                       height: 50,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Color.fromRGBO(255, 255, 255, 1)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.4),
+                            spreadRadius: 4,
+                            offset: Offset(0, 2), // changes position of shadow
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(5),
+                        color: Colors.white,
+                      ),
                       child: const Center(
                         child: Text(
                           "Sign up with email",
