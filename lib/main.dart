@@ -1,4 +1,5 @@
-import 'package:authentication_app/screen/login_screen.dart';
+import 'package:authentication_app/pages/login_page.dart';
+import 'package:authentication_app/pages/register_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,13 +11,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        debugShowCheckedModeBanner: false,
+        routes: {
+          '/': (context) => LoginPage(),
+          '/register': (context) => RegisterPage(),
+        });
   }
 }

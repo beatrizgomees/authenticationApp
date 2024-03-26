@@ -12,7 +12,8 @@ class CustomButtonComponent extends StatelessWidget {
       required this.widthButton,
       required this.assetPath,
       required this.heighAsset,
-      required this.widthAsset});
+      required this.widthAsset,
+      required this.onTap});
 
   String title;
   Color color;
@@ -22,12 +23,14 @@ class CustomButtonComponent extends StatelessWidget {
   String assetPath;
   double widthAsset;
   double heighAsset;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(15),
       child: GestureDetector(
+        onTap: onTap,
         child: Container(
           width: widthButton,
           height: heightButton,
@@ -55,7 +58,6 @@ class CustomButtonComponent extends StatelessWidget {
             ),
           ),
         ),
-        onTap: () {},
       ),
     );
   }
