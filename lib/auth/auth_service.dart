@@ -1,34 +1,53 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:authentication_app/auth/auth_model.dart';
 import 'package:authentication_app/auth/auth_repository.dart';
+import 'package:authentication_app/pages/home_page.dart';
 import 'package:authentication_app/shared/constants/api_constants.dart';
 import 'package:authentication_app/user/user_model.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService implements AuthRepository {
-  late SharedPreferences prefs;
-
-  void initSharedPref() async {
-    prefs = await SharedPreferences.getInstance();
-  }
-
   @override
-  Future<void> login(String email, String password) async {
+  Future<AuthModel> login(
+      String email, String password, BuildContext context) async {
     try {
-      var response = await http.post(Uri.parse(ApiConstants.login),
-          headers: ApiConstants.headers,
-          body: {'email': email, 'password': password});
+      var url = Uri.parse(ApiConstants.login);
+
+      Map<String, dynamic> data = {
+        'email': email,
+        'password': password,
+      };
+
+      String jsonData = json.encode(data);
+      var response = await http.post(
+        url,
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonData,
+      );
+
       print(response.statusCode);
+
       if (response.statusCode == 200) {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+
         var jsonResponse = jsonDecode(response.body);
         log(response.body);
         var token = jsonResponse['acessToken'];
         prefs.setString('acessToken', token);
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => HomePage(token: token)));
+        return AuthModel.fromJson(jsonResponse);
+      } else {
+        throw Exception('Failed to login');
       }
     } catch (e) {
-      throw Exception('Erro ao tentar fazer login: $e');
+      throw Exception('Failed to login');
     }
   }
 

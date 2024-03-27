@@ -1,4 +1,5 @@
 import 'package:authentication_app/auth/auth_service.dart';
+import 'package:authentication_app/pages/home_page.dart';
 import 'package:authentication_app/user/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,11 +13,14 @@ class AuthController {
   //   if(emailControllerText.text.isNotEmpty && )
   // }
 
-  void loginUser(TextEditingController emailControllerText,
-      TextEditingController passwordControllerText) async {
+  void loginUser(
+      TextEditingController emailControllerText,
+      TextEditingController passwordControllerText,
+      BuildContext context) async {
     if (emailControllerText.text.isNotEmpty &&
         passwordControllerText.text.isNotEmpty) {
-      _authService.login(emailControllerText.text, passwordControllerText.text);
+      _authService.login(
+          emailControllerText.text, passwordControllerText.text, context);
     }
   }
 }

@@ -125,7 +125,8 @@ class _LoginScreenState extends State<LoginPage>
                           onTap: () {
                             _authController.loginUser(
                                 _authController.emailControllerText,
-                                _authController.passwordControllerText);
+                                _authController.passwordControllerText,
+                                context);
                           },
                         ),
                       ],

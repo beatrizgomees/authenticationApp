@@ -15,7 +15,6 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     Map<String, dynamic> jwtDecodedToken = JwtDecoder.decode(widget.token);
 
-    email = jwtDecodedToken['email'];
     super.initState();
   }
 
@@ -25,7 +24,7 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(email),
+          Text('email'),
         ],
       ),
     );
