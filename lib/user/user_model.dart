@@ -4,6 +4,7 @@ class User {
   String? username;
   String email;
   String password;
+  String? acessToken;
 
   User({
     this.id,
@@ -11,16 +12,17 @@ class User {
     this.username,
     required this.email,
     required this.password,
+    this.acessToken,
   });
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      id: json['id'],
-      name: json['name'],
-      username: json['username'],
-      email: json['email'],
-      password: json['password'],
-    );
+        id: json['id'],
+        name: json['name'],
+        username: json['username'],
+        email: json['email'],
+        password: json['password'],
+        acessToken: json['acessToken']);
   }
 
   Map<String, dynamic> toJson() {
@@ -30,6 +32,7 @@ class User {
     data['username'] = this.username;
     data['email'] = this.email;
     data['password'] = this.password;
+    data['acessToken'] = this.acessToken;
     return data;
   }
 }

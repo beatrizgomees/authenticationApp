@@ -37,8 +37,8 @@ class AuthService implements AuthRepository {
         SharedPreferences prefs = await SharedPreferences.getInstance();
 
         var jsonResponse = jsonDecode(response.body);
-        log(response.body);
         var token = jsonResponse['acessToken'];
+        log(token);
         prefs.setString('acessToken', token);
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => HomePage(token: token)));

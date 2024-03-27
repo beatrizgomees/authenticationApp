@@ -8,19 +8,14 @@ class AuthController {
   TextEditingController emailControllerText = TextEditingController();
   TextEditingController passwordControllerText = TextEditingController();
 
-  final AuthService _authService = AuthService();
   // bool loginIsEmpty(){
   //   if(emailControllerText.text.isNotEmpty && )
   // }
 
-  void loginUser(
-      TextEditingController emailControllerText,
-      TextEditingController passwordControllerText,
-      BuildContext context) async {
-    if (emailControllerText.text.isNotEmpty &&
-        passwordControllerText.text.isNotEmpty) {
-      _authService.login(
-          emailControllerText.text, passwordControllerText.text, context);
+  void loginUser(String email, String password, BuildContext context) async {
+    final AuthService _authService = AuthService();
+    if (email.isNotEmpty && password.isNotEmpty) {
+      _authService.login(email, password, context);
     }
   }
 }

@@ -124,8 +124,8 @@ class _LoginScreenState extends State<LoginPage>
                           color: Colors.white,
                           onTap: () {
                             _authController.loginUser(
-                                _authController.emailControllerText,
-                                _authController.passwordControllerText,
+                                _authController.emailControllerText.text,
+                                _authController.passwordControllerText.text,
                                 context);
                           },
                         ),
