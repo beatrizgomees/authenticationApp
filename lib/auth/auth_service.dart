@@ -7,7 +7,6 @@ import 'package:authentication_app/shared/constants/api_constants.dart';
 import 'package:authentication_app/user/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService implements AuthRepository {
   @override
