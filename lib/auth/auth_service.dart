@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:authentication_app/auth/auth_model.dart';
 import 'package:authentication_app/auth/auth_repository.dart';
 import 'package:authentication_app/pages/home_page.dart';
+import 'package:authentication_app/shared/components/show_snackBar_custom_component.dart';
 import 'package:authentication_app/shared/constants/api_constants.dart';
 import 'package:authentication_app/user/user_model.dart';
 import 'package:flutter/material.dart';
@@ -31,23 +32,21 @@ class AuthService implements AuthRepository {
         body: jsonData,
       );
 
-      print(response.statusCode);
-
       if (response.statusCode == 200) {
         SharedPreferences prefs = await SharedPreferences.getInstance();
 
         var jsonResponse = jsonDecode(response.body);
         var token = jsonResponse['acessToken'];
         log(token);
-        prefs.setString('acessToken', token);
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => HomePage(token: token)));
         return AuthModel.fromJson(jsonResponse);
       } else {
-        throw Exception('Failed to login');
+        showErrorMessageEmailOrPasswordFailed(
+            context, "Email or password invalid");
+        return Future.error("Email or password invalid");
       }
     } catch (e) {
-      throw Exception('Failed to login');
+      showErrorMessageEmailOrPasswordFailed(context, "Login Failed");
+      return Future.error("Login Failed");
     }
   }
 

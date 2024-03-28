@@ -2,16 +2,16 @@ class User {
   int? id;
   String? name;
   String? username;
-  String email;
-  String password;
+  String? email;
+  String? password;
   String? acessToken;
 
   User({
     this.id,
     this.name,
     this.username,
-    required this.email,
-    required this.password,
+    this.email,
+    this.password,
     this.acessToken,
   });
 
