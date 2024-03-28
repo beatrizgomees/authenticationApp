@@ -1,6 +1,4 @@
-import 'package:authentication_app/pages/home_page.dart';
 import 'package:authentication_app/pages/login_page.dart';
-import 'package:authentication_app/pages/onboarding_page.dart';
 import 'package:authentication_app/pages/register_page.dart';
 import 'package:flutter/material.dart';
 

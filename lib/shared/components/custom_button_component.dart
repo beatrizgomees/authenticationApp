@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+// ignore: must_be_immutable
 class CustomButtonComponent extends StatelessWidget {
   CustomButtonComponent(
       {super.key,
