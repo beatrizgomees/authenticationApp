@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'package:authentication_app/auth/auth_model.dart';
-import 'package:authentication_app/auth/auth_repository.dart';
-import 'package:authentication_app/shared/components/show_snackBar_custom_component.dart';
-import 'package:authentication_app/shared/constants/api_constants.dart';
-import 'package:authentication_app/user/user_model.dart';
+import 'package:authentication_app/src/features/auth/data/auth_model.dart';
+import 'package:authentication_app/src/features/auth/repository/auth_repository.dart';
+import 'package:authentication_app/src/shared/components/show_snackBar_custom_component.dart';
+import 'package:authentication_app/src/shared/constants/api_constants.dart';
+import 'package:authentication_app/src/features/user/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 

@@ -1,5 +1,5 @@
-import 'package:authentication_app/shared/components/custom_button_component.dart';
-import 'package:authentication_app/shared/components/text_form_field_component.dart';
+import 'package:authentication_app/src/shared/components/custom_button_component.dart';
+import 'package:authentication_app/src/shared/components/text_form_field_component.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {

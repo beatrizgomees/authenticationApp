@@ -1,6 +1,7 @@
-import 'package:authentication_app/auth/auth_controller.dart';
-import 'package:authentication_app/shared/components/custom_button_component.dart';
-import 'package:authentication_app/shared/components/text_form_field_component.dart';
+import 'package:authentication_app/src/features/auth/view_model/auth_view_model.dart';
+import 'package:authentication_app/src/features/auth/view_model/auth_view_model_impl.dart';
+import 'package:authentication_app/src/shared/components/custom_button_component.dart';
+import 'package:authentication_app/src/shared/components/text_form_field_component.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -16,7 +17,7 @@ class _LoginScreenState extends State<LoginPage>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _animation;
-  AuthController _authController = AuthController();
+  late AuthViewModel _authViewModel;
   @override
   void initState() {
     super.initState();
@@ -102,7 +103,7 @@ class _LoginScreenState extends State<LoginPage>
                           colorFocus: Color.fromRGBO(245, 247, 248, 1),
                           filled: true,
                           keyboardType: TextInputType.emailAddress,
-                          controller: _authController.emailControllerText,
+                          controller: _authViewModel.emailControllerText,
                         ),
                         TextFormFieldComponent(
                           title: 'Passowrd',
@@ -111,7 +112,7 @@ class _LoginScreenState extends State<LoginPage>
                           filled: true,
                           keyboardType: TextInputType.text,
                           isObscureText: true,
-                          controller: _authController.passwordControllerText,
+                          controller: _authViewModel.passwordControllerText,
                         ),
                         CustomButtonComponent(
                           widthAsset: 0,
@@ -123,12 +124,19 @@ class _LoginScreenState extends State<LoginPage>
                           textColor: Colors.black,
                           color: Colors.white,
                           onTap: () {
-                            _authController.loginUser(
-                                _authController.emailControllerText.text,
-                                _authController.passwordControllerText.text,
-                                context);
+                            _authViewModel.loginUser(
+                              _authViewModel.emailControllerText.text,
+                              _authViewModel.passwordControllerText.text,
+                            );
                           },
                         ),
+                        AnimatedBuilder(
+                          animation: _authViewModel,
+                          builder: (context, child) {
+                            return Text(
+                                '${_authViewModel.emailControllerText.text}');
+                          },
+                        )
                       ],
                     ),
                   ),
