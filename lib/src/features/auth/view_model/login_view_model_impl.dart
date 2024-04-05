@@ -1,9 +1,9 @@
 import 'package:authentication_app/src/features/auth/network/auth_service.dart';
-import 'package:authentication_app/src/features/auth/view_model/auth_view_model.dart';
+import 'package:authentication_app/src/features/auth/view_model/login_view_model.dart';
 import 'package:authentication_app/src/features/user/user_model.dart';
 import 'package:flutter/material.dart';
 
-class AuthHomeViewImpl extends AuthViewModel {
+class LoginViewModelImpl extends LoginViewModel {
   @override
   void loginUser(String email, String password) {
     void loginUser(String email, String password, BuildContext context) async {

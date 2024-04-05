@@ -1,5 +1,5 @@
-import 'package:authentication_app/src/features/auth/view_model/auth_view_model.dart';
-import 'package:authentication_app/src/features/auth/view_model/auth_view_model_impl.dart';
+import 'package:authentication_app/src/features/auth/view_model/login_view_model.dart';
+import 'package:authentication_app/src/features/auth/view_model/login_view_model_impl.dart';
 import 'package:authentication_app/src/shared/components/custom_button_component.dart';
 import 'package:authentication_app/src/shared/components/text_form_field_component.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,7 +17,8 @@ class _LoginScreenState extends State<LoginPage>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _animation;
-  late AuthViewModel _authViewModel;
+  final LoginViewModel _authViewModel = new LoginViewModelImpl();
+
   @override
   void initState() {
     super.initState();
@@ -74,7 +75,7 @@ class _LoginScreenState extends State<LoginPage>
                                 ),
                               ],
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             const Padding(
                               padding: EdgeInsets.only(left: 20.0),
                               child: Text(
@@ -104,6 +105,8 @@ class _LoginScreenState extends State<LoginPage>
                           filled: true,
                           keyboardType: TextInputType.emailAddress,
                           controller: _authViewModel.emailControllerText,
+                          currentFocusNode: _authViewModel.emailFocusNode,
+                          nextFocusNode: _authViewModel.passwordFocusNode,
                         ),
                         TextFormFieldComponent(
                           title: 'Passowrd',
@@ -112,6 +115,7 @@ class _LoginScreenState extends State<LoginPage>
                           filled: true,
                           keyboardType: TextInputType.text,
                           isObscureText: true,
+                          currentFocusNode: _authViewModel.passwordFocusNode,
                           controller: _authViewModel.passwordControllerText,
                         ),
                         CustomButtonComponent(
@@ -130,13 +134,13 @@ class _LoginScreenState extends State<LoginPage>
                             );
                           },
                         ),
-                        AnimatedBuilder(
-                          animation: _authViewModel,
-                          builder: (context, child) {
-                            return Text(
-                                '${_authViewModel.emailControllerText.text}');
-                          },
-                        )
+                        // AnimatedBuilder(
+                        //   animation: _authViewModel,
+                        //   builder: (context, child) {
+                        //     return Text(
+                        //         '${_authViewModel.emailControllerText.text}');
+                        //   },
+                        // )
                       ],
                     ),
                   ),
@@ -183,7 +187,7 @@ class _LoginScreenState extends State<LoginPage>
                   heighAsset: 50,
                   color: Color.fromRGBO(41, 41, 41, 1),
                   onTap: () {
-                    Navigator.pushNamed(context, '/register');
+                    Navigator.pushNamed(context, '/REGISTER');
                   },
                 )
               ],

@@ -33,6 +33,7 @@ class AuthService implements AuthRepository {
         var jsonResponse = jsonDecode(response.body);
         var token = jsonResponse['acessToken'];
         log(token);
+
         return AuthModel.fromJson(jsonResponse);
       } else {
         showErrorMessageEmailOrPasswordFailed(

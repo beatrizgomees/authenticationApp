@@ -1,7 +1,10 @@
+import 'dart:math';
+
+import 'package:authentication_app/src/shared/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class TextFormFieldComponent extends StatelessWidget {
+class TextFormFieldComponent extends StatefulWidget {
   TextFormFieldComponent(
       {super.key,
       required this.title,
@@ -10,7 +13,10 @@ class TextFormFieldComponent extends StatelessWidget {
       required this.filled,
       required this.keyboardType,
       this.isObscureText,
-      this.controller});
+      this.controller,
+      required this.currentFocusNode,
+      this.onFieldSubmitted,
+      this.nextFocusNode});
 
   String title;
   Color colorFill;
@@ -19,23 +25,53 @@ class TextFormFieldComponent extends StatelessWidget {
   TextInputType keyboardType;
   bool? isObscureText;
   TextEditingController? controller;
+  FocusNode currentFocusNode;
+  FocusNode? nextFocusNode;
+  final void Function(String)? onFieldSubmitted;
+
+  @override
+  State<TextFormFieldComponent> createState() => _TextFormFieldComponentState();
+}
+
+class _TextFormFieldComponentState extends State<TextFormFieldComponent> {
+  bool? visibilityPassowrd = false;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20),
       child: TextFormField(
-        controller: controller,
-        keyboardType: keyboardType,
-        obscureText: isObscureText ?? false,
+        controller: widget.controller,
+        keyboardType: widget.keyboardType,
+        obscureText:
+            visibilityPassowrd! == false ? widget.isObscureText = true : false,
+        obscuringCharacter: "*",
+        focusNode: widget.currentFocusNode,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(12, 0, 12, 0),
-          fillColor: colorFill,
-          filled: filled,
-          focusColor: colorFocus,
-          hintText: title,
+          fillColor: widget.colorFill,
+          filled: widget.filled,
+          focusColor: widget.colorFocus,
+          hintText: widget.title,
+          suffixIcon: widget.isObscureText == true
+              ? GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      visibilityPassowrd = !visibilityPassowrd!;
+                      print(visibilityPassowrd!);
+                    });
+                  },
+                  child: visibilityPassowrd! == false
+                      ? Icon(Icons.visibility_off)
+                      : Icon(Icons.visibility),
+                )
+              : null,
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
         ),
+        onFieldSubmitted: (value) {
+          Utils.fieldFocusChange(
+              context, widget.currentFocusNode, widget.nextFocusNode!);
+        },
       ),
     );
   }

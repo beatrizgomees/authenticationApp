@@ -1,3 +1,4 @@
+import 'package:authentication_app/src/features/register/view_model/register_view_model.impl.dart';
 import 'package:authentication_app/src/shared/components/custom_button_component.dart';
 import 'package:authentication_app/src/shared/components/text_form_field_component.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,8 @@ class _RegisterScreenState extends State<RegisterPage>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _animation;
+
+  final RegisterViewModelImpl _registerViewModelImpl = RegisterViewModelImpl();
 
   @override
   void initState() {
@@ -91,12 +94,18 @@ class _RegisterScreenState extends State<RegisterPage>
                     ),
                   ),
                   TextFormFieldComponent(
+                      controller: _registerViewModelImpl.nameControllerText,
+                      currentFocusNode: _registerViewModelImpl.nameFocusNode,
+                      nextFocusNode: _registerViewModelImpl.usernameFocusNode,
                       title: 'Name',
                       colorFill: Colors.white,
                       colorFocus: Color.fromRGBO(253, 10, 96, 1),
                       filled: true,
                       keyboardType: TextInputType.text),
                   TextFormFieldComponent(
+                    controller: _registerViewModelImpl.usernameControllerText,
+                    currentFocusNode: _registerViewModelImpl.usernameFocusNode,
+                    nextFocusNode: _registerViewModelImpl.emailFocusNode,
                     title: 'Username',
                     colorFill: Colors.white,
                     colorFocus: Color.fromRGBO(253, 10, 96, 1),
@@ -104,6 +113,9 @@ class _RegisterScreenState extends State<RegisterPage>
                     keyboardType: TextInputType.text,
                   ),
                   TextFormFieldComponent(
+                    controller: _registerViewModelImpl.emailControllerText,
+                    currentFocusNode: _registerViewModelImpl.emailFocusNode,
+                    nextFocusNode: _registerViewModelImpl.passwordFocusNode,
                     title: 'Email',
                     colorFill: Colors.white,
                     colorFocus: Color.fromRGBO(253, 10, 96, 1),
@@ -111,7 +123,23 @@ class _RegisterScreenState extends State<RegisterPage>
                     keyboardType: TextInputType.emailAddress,
                   ),
                   TextFormFieldComponent(
+                    controller: _registerViewModelImpl.passwordControllerText,
+                    currentFocusNode: _registerViewModelImpl.passwordFocusNode,
+                    nextFocusNode:
+                        _registerViewModelImpl.confirmPassowrdFocusNode,
                     title: 'Password',
+                    colorFill: Colors.white,
+                    colorFocus: Color.fromRGBO(253, 10, 96, 1),
+                    filled: true,
+                    keyboardType: TextInputType.text,
+                    isObscureText: true,
+                  ),
+                  TextFormFieldComponent(
+                    controller:
+                        _registerViewModelImpl.confirmPassowrdControllerText,
+                    currentFocusNode:
+                        _registerViewModelImpl.confirmPassowrdFocusNode,
+                    title: 'Confirm Password',
                     colorFill: Colors.white,
                     colorFocus: Color.fromRGBO(253, 10, 96, 1),
                     filled: true,
@@ -146,7 +174,7 @@ class _RegisterScreenState extends State<RegisterPage>
                     heighAsset: 0,
                     widthAsset: 0,
                     onTap: () {
-                      Navigator.pushNamed(context, '/');
+                      Navigator.pushNamed(context, '/LOGIN');
                     },
                   ),
                 ],

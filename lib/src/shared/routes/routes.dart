@@ -1,6 +1,6 @@
-import 'package:authentication_app/src/features/auth/ui/pages/login_page.dart';
-import 'package:authentication_app/src/features/auth/ui/pages/register_page.dart';
-import 'package:authentication_app/src/utils/routes/routes_name.dart';
+import 'package:authentication_app/src/features/auth/page/login_page.dart';
+import 'package:authentication_app/src/features/register/page/register_page.dart';
+import 'package:authentication_app/src/shared/routes/routes_name.dart';
 import 'package:authentication_app/src/view/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +12,7 @@ class Routes {
         return MaterialPageRoute(builder: (_) => HomePage());
       case RoutesName.LOGIN:
         return MaterialPageRoute(builder: (_) => const LoginPage());
-      case RoutesName.LOGIN:
+      case RoutesName.REGISTER:
         return MaterialPageRoute(builder: (_) => const RegisterPage());
       default:
         return MaterialPageRoute(

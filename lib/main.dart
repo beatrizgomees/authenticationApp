@@ -1,7 +1,7 @@
-import 'package:authentication_app/src/features/auth/ui/pages/login_page.dart';
-import 'package:authentication_app/src/features/auth/ui/pages/register_page.dart';
-import 'package:authentication_app/src/utils/routes/routes.dart';
-import 'package:authentication_app/src/utils/routes/routes_name.dart';
+import 'package:authentication_app/src/features/auth/page/login_page.dart';
+import 'package:authentication_app/src/features/register/page/register_page.dart';
+import 'package:authentication_app/src/shared/routes/routes.dart';
+import 'package:authentication_app/src/shared/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 
 void main() {
