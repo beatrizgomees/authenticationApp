@@ -9,7 +9,10 @@ class Routes {
     final argument = settings.arguments;
     switch (settings.name) {
       case RoutesName.HOME:
-        return MaterialPageRoute(builder: (_) => HomePage());
+        return MaterialPageRoute(
+            builder: (_) => HomePage(
+                  email: argument.toString(),
+                ));
       case RoutesName.LOGIN:
         return MaterialPageRoute(builder: (_) => const LoginPage());
       case RoutesName.REGISTER:

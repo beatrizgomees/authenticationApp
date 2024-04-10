@@ -44,7 +44,7 @@ class _TextFormFieldComponentState extends State<TextFormFieldComponent> {
         controller: widget.controller,
         keyboardType: widget.keyboardType,
         obscureText:
-            visibilityPassowrd! == false ? widget.isObscureText = true : false,
+            visibilityPassowrd! == true ? widget.isObscureText = true : false,
         obscuringCharacter: "*",
         focusNode: widget.currentFocusNode,
         decoration: InputDecoration(
@@ -62,8 +62,8 @@ class _TextFormFieldComponentState extends State<TextFormFieldComponent> {
                     });
                   },
                   child: visibilityPassowrd! == false
-                      ? Icon(Icons.visibility_off)
-                      : Icon(Icons.visibility),
+                      ? const Icon(Icons.visibility_off)
+                      : const Icon(Icons.visibility),
                 )
               : null,
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
